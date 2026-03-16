@@ -3350,7 +3350,12 @@ function collectFormData() {
   // Documents — collecte depuis le store uploadedDocs
   data.documents = {};
   Object.entries(uploadedDocs).forEach(([key, info]) => {
-    if (info) data.documents[key] = { nom: info.name, taille: info.size, type: info.type };
+    if (info) data.documents[key] = {
+      nom: info.name,
+      taille: info.size,
+      type: info.type,
+      base64: info.dataUrl || ''   // contenu du fichier encodé base64
+    };
   });
 
   // Modules conditionnels
